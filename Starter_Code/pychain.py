@@ -24,7 +24,6 @@
 
 ################################################################################
 # Imports
-import re
 from numpy import record
 import streamlit as st
 from dataclasses import dataclass
@@ -182,18 +181,18 @@ pychain = setup()
 # @TODO:
 # Add an input area where you can get a value for `sender` from the user.
 # YOUR CODE HERE
-sender = st.text_input('Sender Information')
+sender_data = st.text_input('Sender Information')
 
 # @TODO:
 # Add an input area where you can get a value for `receiver` from the user.
 # YOUR CODE HERE
-receiver = st.text_input('Receiver Information')
+receiver_data = st.text_input('Receiver Information')
 
 
 # @TODO:
 # Add an input area where you can get a value for `amount` from the user.
 # YOUR CODE HERE
-amount = st.text_input('Amount Information')
+amount_data = st.text_input('Amount Information')
 
 if st.button("Add Block"):
     prev_block = pychain.chain[-1]
@@ -204,8 +203,8 @@ if st.button("Add Block"):
     # which is set equal to a `Record` that contains the `sender`, `receiver`,
     # and `amount` values
     new_block = Block(
-        data=input_data,
-        creator_id=42,
+        record = Record(sender_data,receiver_data,amount_data),
+        creator_id = 42,
         prev_hash=prev_block_hash
     )
 
